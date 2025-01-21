@@ -1,0 +1,152 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 320px;
+  height: 600px;
+  max-height: 80vh;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid rgb(140, 176, 255);
+  margin: 50px auto;
+}
+
+.contactsContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px;
+}
+
+.ToolbarContainer {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+}
+.ToolbarContainer > a {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.homeBtn {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(68, 125, 248);
+  color: white;
+  cursor: pointer;
+  border: none;
+  border-radius: 2px !important;
+}
+
+.contactsBtn {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(68, 125, 248);
+  color: white;
+  cursor: pointer;
+  border: none;
+  border-left: 1px solid rgb(255, 255, 255);
+  border-radius: 2px !important;
+}
+
+.contactsBox {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  height: calc(80vh - 175px);
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+li {
+  width: 100%;
+  height: 50px;
+  list-style: none;
+  background-color: rgb(241, 241, 241);
+  border-radius: 6px;
+}
+
+li > button {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  padding: 4px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 4px;
+  background-color: rgb(235, 235, 235);
+}
+
+.contactPicture {
+  width: 40px;
+  height: 40px;
+}
+.contactPicture > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.fullName {
+  font-size: 13px;
+  color: #2b2b2b;
+  font-weight: 600;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+.numberCity {
+  width: 100%;
+  display: flex;
+  gap: 8px;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+.phone {
+  font-size: 11px;
+  color: #2b2b2b;
+  font-weight: 500;
+}
+
+.city {
+  font-size: 9px;
+  color: #2b2b2b;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.SearchBoxContainer {
+  width: 100%;
+  height: 50px;
+  background-color: darkslategrey;
+}
+
+.VisitedListContainer {
+  width: 100%;
+  background-color: teal;
+  display: flex;
+  flex-direction: column;
+}
