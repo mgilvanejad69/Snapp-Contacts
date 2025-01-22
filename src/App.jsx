@@ -11,15 +11,17 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Layout
-        visitedContacts={visitedContacts}
-        onSetVisitedContacts={setVisitedContacts}
-      >
+      <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route
             path="/Contacts"
-            element={<Contacts visitedContacts={visitedContacts} onSetVisitedContacts={setVisitedContacts} />}
+            element={
+              <Contacts
+                visitedContacts={visitedContacts}
+                onSetVisitedContacts={setVisitedContacts}
+              />
+            }
           />
           <Route path="/Contacts/:id" element={<ContactDetails />} />
         </Routes>

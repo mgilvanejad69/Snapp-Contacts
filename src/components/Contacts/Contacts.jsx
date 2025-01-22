@@ -1,8 +1,8 @@
-import { useNavigate } from "react-router";
 import { useEffect, useState } from "react";
+import FrequentContacts from "../VisitedContact/VisitedContact";
+import ContactBox from "../ContactBox/ContactBox";
 
 const Contacts = ({ visitedContacts, onSetVisitedContacts }) => {
-  const navigate = useNavigate();
   const [customerData, setCustomerData] = useState([]);
   const [contactSearch, setContactSearch] = useState([]);
 
@@ -19,25 +19,6 @@ const Contacts = ({ visitedContacts, onSetVisitedContacts }) => {
       })
       .catch((error) => console.log(error));
   }, []);
-
-  const handleContactDetail = (contact) => {
-    navigate(`/contacts/${contact.id}`);
-
-    if (visitedContacts.length == 0) {
-      onSetVisitedContacts([...visitedContacts, contact]);
-    }
-    if (visitedContacts.length != 0) {
-      const visitedFiltered = visitedContacts.filter(
-        (elem) => elem.id != contact.id
-      );
-
-      visitedFiltered.unshift(contact);
-      if (visitedFiltered.length > 4) {
-        visitedFiltered.pop();
-      }
-      onSetVisitedContacts(visitedFiltered);
-    }
-  };
 
   const handleSearch = (e) => {
     let value = e.target.value;
@@ -66,55 +47,15 @@ const Contacts = ({ visitedContacts, onSetVisitedContacts }) => {
       </div>
 
       <div className="contactsBox">
-        <>
-          {visitedContacts.length > 0 ? (
-            <ul className="VisitedListContainer">
-              {visitedContacts.map((elem) => (
-                <li key={elem.id}>
-                  <button
-                    className="visitedContact"
-                    onClick={() => handleContactDetail(elem)}
-                  >
-                    <div className="contactPicture">
-                      <img src={elem.picture.medium} alt="" />
-                    </div>
-                    <div className="contactInfo">
-                      <h6 className="fullName">
-                        {elem.name.title} {elem.name.first} {elem.name.last}
-                      </h6>
-                      <div className="numberCity">
-                        <p className="phone">{elem.phone}</p>
-                        <p className="city">{elem.location.city}</p>
-                      </div>
-                    </div>
-                  </button>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            ""
-          )}
-        </>
-        <ul>
-          {contactSearch.map((elem) => (
-            <li key={elem.id}>
-              <button onClick={() => handleContactDetail(elem)}>
-                <div className="contactPicture">
-                  <img src={elem.picture.medium} alt="" />
-                </div>
-                <div className="contactInfo">
-                  <h6 className="fullName">
-                    {elem.name.title} {elem.name.first} {elem.name.last}
-                  </h6>
-                  <div className="numberCity">
-                    <p className="phone">{elem.phone}</p>
-                    <p className="city">{elem.location.city}</p>
-                  </div>
-                </div>
-              </button>
-            </li>
-          ))}
-        </ul>
+        <FrequentContacts
+          visitedContacts={visitedContacts}
+          onSetVisitedContacts={onSetVisitedContacts}
+        />
+        <ContactBox
+          contactSearch={contactSearch}
+          visitedContacts={visitedContacts}
+          onSetVisitedContacts={onSetVisitedContacts}
+        />
       </div>
     </div>
   );
