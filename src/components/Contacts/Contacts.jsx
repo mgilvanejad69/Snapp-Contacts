@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 const Contacts = ({ visitedContacts, onSetVisitedContacts }) => {
   const navigate = useNavigate();
   const [customerData, setCustomerData] = useState([]);
+  const [contactSearch, setContactSearch] = useState([]);
 
   useEffect(() => {
     fetch("https://randomuser.me/api/?results=50")
@@ -14,6 +15,7 @@ const Contacts = ({ visitedContacts, onSetVisitedContacts }) => {
           id: index + 1,
         }));
         setCustomerData(newData);
+        setContactSearch(newData);
       })
       .catch((error) => console.log(error));
   }, []);
@@ -24,29 +26,48 @@ const Contacts = ({ visitedContacts, onSetVisitedContacts }) => {
     if (visitedContacts.length == 0) {
       onSetVisitedContacts([...visitedContacts, contact]);
     }
-    if (0 < visitedContacts.length < 5) {
+    if (visitedContacts.length != 0) {
       const visitedFiltered = visitedContacts.filter(
         (elem) => elem.id != contact.id
       );
+
       visitedFiltered.unshift(contact);
-      onSetVisitedContacts(visitedFiltered);
-    } else {
-      const visitedFiltered = visitedContacts.filter(
-        (elem) => elem.id != contact.id
-      );
-      visitedFiltered.pop();
-      visitedFiltered.unshift(contact);
+      if (visitedFiltered.length > 4) {
+        visitedFiltered.pop();
+      }
       onSetVisitedContacts(visitedFiltered);
     }
   };
-  console.log(visitedContacts);
+
+  const handleSearch = (e) => {
+    let value = e.target.value;
+    const searchFiltered = customerData.filter(
+      (elem) =>
+        elem.name.title.toLowerCase().includes(value.toLowerCase()) ||
+        elem.name.first.toLowerCase().includes(value.toLowerCase()) ||
+        elem.name.last.toLowerCase().includes(value.toLowerCase()) ||
+        elem.phone.includes(value)
+    );
+    setContactSearch(searchFiltered);
+  };
 
   return (
     <div className="contactsContainer">
-      <div className="SearchBoxContainer"></div>
+      <div className="SearchBoxContainer">
+        <form>
+          <input
+            type="text"
+            name=""
+            id=""
+            placeholder="Search Contact..."
+            onChange={handleSearch}
+          />
+        </form>
+      </div>
+
       <div className="contactsBox">
         <>
-          {visitedContacts ? (
+          {visitedContacts.length > 0 ? (
             <ul className="VisitedListContainer">
               {visitedContacts.map((elem) => (
                 <li key={elem.id}>
@@ -75,7 +96,7 @@ const Contacts = ({ visitedContacts, onSetVisitedContacts }) => {
           )}
         </>
         <ul>
-          {customerData.map((elem) => (
+          {contactSearch.map((elem) => (
             <li key={elem.id}>
               <button onClick={() => handleContactDetail(elem)}>
                 <div className="contactPicture">

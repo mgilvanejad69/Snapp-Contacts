@@ -4,9 +4,21 @@
   box-sizing: border-box;
 }
 
+::-webkit-scrollbar{
+  width: 7px;
+}
+
+::-webkit-scrollbar-track{
+  background:#f1f1f1;
+}
+
+::-webkit-scrollbar-thumb{
+  background: #afafaf;
+}
+
 .container {
   width: 320px;
-  height: 600px;
+  height: 630px;
   max-height: 80vh;
   max-width: 320px;
   display: flex;
@@ -63,7 +75,7 @@
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
-  height: calc(80vh - 175px);
+  height: calc(80vh - 230px);
 }
 
 ul {
@@ -140,19 +152,39 @@ li > button {
 
 .SearchBoxContainer {
   width: 100%;
-  height: 50px;
-  background-color: darkslategrey;
+  height: 40px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+  padding-bottom: 6px;
+}
+
+.SearchBoxContainer>form{
+  width: 100%;
+  height: 100%;
+}
+
+.SearchBoxContainer>form>input{
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border: none;
+  background-color: rgb(226, 226, 226);
+  padding-left: 12px;
+  font-size: 15px;
+  border-radius: 4px;
 }
 
 .VisitedListContainer {
   width: 100%;
-  background-color: teal;
   display: flex;
   flex-direction: column;
+  margin-bottom: 8px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+  padding-bottom: 6px;
 }
 
 .VisitedListContainer > li > button.visitedContact {
-  background-color: rgb(68, 125, 248) !important;
+  background-color: rgba(207, 207, 207, 0.808) !important;
   width: 100%;
   height: 100%;
   display: flex;
