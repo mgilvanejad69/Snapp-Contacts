@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 
-const Toolbar = ({ children }) => {
+const Toolbar = ({ children}) => {
+  
   return (
     <>
       {children}
@@ -9,7 +10,9 @@ const Toolbar = ({ children }) => {
           <button className="homeBtn">Home</button>
         </Link>
         <Link to="/Contacts">
-          <button className="contactsBtn">Contacts</button>
+          <button className="contactsBtn">
+            Contacts
+          </button>
         </Link>
       </div>
     </>

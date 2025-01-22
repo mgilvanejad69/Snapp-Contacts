@@ -1,10 +1,13 @@
 import Toolbar from "../Toolbar/Toolbar";
 
-const Layout = ({ children }) => {
+const Layout = ({ children, visitedContacts,onSetVisitedContacts }) => {
   return (
     <div className="container">
       {children}
-      <Toolbar />
+      <Toolbar
+        visitedContacts={visitedContacts}
+        onSetVisitedContacts={onSetVisitedContacts}
+      />
     </div>
   );
 };
