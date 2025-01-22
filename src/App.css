@@ -4,15 +4,15 @@
   box-sizing: border-box;
 }
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   width: 7px;
 }
 
-::-webkit-scrollbar-track{
-  background:#f1f1f1;
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
 }
 
-::-webkit-scrollbar-thumb{
+::-webkit-scrollbar-thumb {
   background: #afafaf;
 }
 
@@ -28,12 +28,43 @@
   margin: 50px auto;
 }
 
+.homeContainer {
+  width: 300px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 100px auto;
+  gap: 24px;
+}
+
+.homeContainer > h3 {
+  color: rgb(68, 125, 248);
+}
+
+.snappBox {
+  width: 300px;
+  height: 300px;
+  border-radius: 16px;
+  background-color: rgb(68, 125, 248);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+}
+
+.snappBox > h1 {
+  color: white;
+  text-align: center  ;
+}
+
 .contactsContainer {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 4px;
-  padding: 8px;
+  padding:24px 8px 8px;
 }
 
 .ToolbarContainer {
@@ -75,7 +106,7 @@
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
-  height: calc(80vh - 230px);
+  height: calc(80vh - 240px);
 }
 
 ul {
@@ -128,6 +159,7 @@ li > button {
   color: #2b2b2b;
   font-weight: 600;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  text-align: start;
 }
 .numberCity {
   width: 100%;
@@ -158,12 +190,12 @@ li > button {
   padding-bottom: 6px;
 }
 
-.SearchBoxContainer>form{
+.SearchBoxContainer > form {
   width: 100%;
   height: 100%;
 }
 
-.SearchBoxContainer>form>input{
+.SearchBoxContainer > form > input {
   width: 100%;
   height: 100%;
   outline: none;

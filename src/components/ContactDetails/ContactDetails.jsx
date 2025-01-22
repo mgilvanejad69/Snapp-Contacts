@@ -1,6 +1,7 @@
 import { useParams } from "react-router";
 import classes from "./ContactDetails.module.css";
 import { useEffect, useState } from "react";
+import Skeleton from "../Skeleton/Skeleton";
 
 const ContactDetails = () => {
   const params = useParams();
@@ -39,7 +40,7 @@ const ContactDetails = () => {
           </p>
         </div>
       ) : (
-        <h1>Loading...</h1>
+        <Skeleton />
       )}
     </>
   );

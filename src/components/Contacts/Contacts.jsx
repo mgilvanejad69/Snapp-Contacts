@@ -1,50 +1,18 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import FrequentContacts from "../VisitedContact/VisitedContact";
 import ContactBox from "../ContactBox/ContactBox";
+import SearchBox from "../SearchBox/SearchBox";
 
 const Contacts = ({ visitedContacts, onSetVisitedContacts }) => {
-  const [customerData, setCustomerData] = useState([]);
   const [contactSearch, setContactSearch] = useState([]);
-
-  useEffect(() => {
-    fetch("https://randomuser.me/api/?results=50")
-      .then((res) => res.json())
-      .then((data) => {
-        const newData = data.results.map((elem, index) => ({
-          ...elem,
-          id: index + 1,
-        }));
-        setCustomerData(newData);
-        setContactSearch(newData);
-      })
-      .catch((error) => console.log(error));
-  }, []);
-
-  const handleSearch = (e) => {
-    let value = e.target.value;
-    const searchFiltered = customerData.filter(
-      (elem) =>
-        elem.name.title.toLowerCase().includes(value.toLowerCase()) ||
-        elem.name.first.toLowerCase().includes(value.toLowerCase()) ||
-        elem.name.last.toLowerCase().includes(value.toLowerCase()) ||
-        elem.phone.includes(value)
-    );
-    setContactSearch(searchFiltered);
-  };
+  const [status, setStatus] = useState(false);
 
   return (
     <div className="contactsContainer">
-      <div className="SearchBoxContainer">
-        <form>
-          <input
-            type="text"
-            name=""
-            id=""
-            placeholder="Search Contact..."
-            onChange={handleSearch}
-          />
-        </form>
-      </div>
+      <SearchBox
+        onSetContactSearch={setContactSearch}
+        onSetStatus={setStatus}
+      />
 
       <div className="contactsBox">
         <FrequentContacts
@@ -55,6 +23,7 @@ const Contacts = ({ visitedContacts, onSetVisitedContacts }) => {
           contactSearch={contactSearch}
           visitedContacts={visitedContacts}
           onSetVisitedContacts={onSetVisitedContacts}
+          status={status}
         />
       </div>
     </div>
